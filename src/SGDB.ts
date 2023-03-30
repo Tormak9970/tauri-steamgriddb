@@ -1,51 +1,5 @@
 import { http } from "@tauri-apps/api";
-
-export interface SGDBGame {
-  id: number;
-  name: string;
-  types: string[];
-  verified: boolean;
-}
-
-export interface SGDBAuthor {
-  name: string;
-  steam64: string;
-  avatar: URL;
-}
-
-export interface SGDBImage {
-  id: number;
-  score: number;
-  style: string[];
-  url: URL;
-  thumb: URL;
-  tags: string[];
-  author: SGDBAuthor;
-}
-
-export interface SGDBOptions {
-  key?: string;
-  headers?: Record<string, any>;
-  baseURL?: string;
-}
-
-export interface SGDBImageOptions {
-  id: number;
-  type: string;
-  styles?: string[];
-  dimensions?: string[];
-  mimes?: string[];
-  types?: string[];
-  nsfw?: string;
-  epilepsy?: string;
-  humor?: string;
-  oneoftag?: string;
-  page?: number;
-}
-
-export interface SGDBQueryParams {
-  [key: string]: string;
-}
+import type { SGDBOptions, SGDBGame, SGDBAuthor, SGDBImage, SGDBImageOptions } from "steamgriddb";
 
 export type TauriRequest = {
   data: string,
@@ -99,7 +53,7 @@ export class SGDB {
     }
   }
 
-  private buildQuery(options: any): SGDBQueryParams {
+  private buildQuery(options: any): { [key: string]: string; } {
     const multiParams = ["styles", "dimensions", "mimes", "types"];
     const singleParams = ["nsfw", "humor", "epilepsy", "oneoftag", "page"];
     const params: any = {};
@@ -126,7 +80,7 @@ export class SGDB {
    * @param formData Optional form data.
    * @returns A promise resolving to the request's result.
    */
-  async handleRequest(method: http.HttpVerb, url: string, params: SGDBQueryParams = {}, formData = null): Promise<any> {
+  async handleRequest(method: http.HttpVerb, url: string, params: { [key: string]: string; } = {}, formData = null): Promise<any> {
     let options = {
       headers: this.headers,
       method,
@@ -477,4 +431,15 @@ export class SGDB {
       humor: humor
     });
   }
+
+  /**
+   * Deletes the provided grids from SteamGridDB.
+   * @param ids Id or list of ids of grids to delete.
+   * @returns A promise resolving to true if the operation succeeded.
+   */
+  async deleteGrids(ids:number|number[]):Promise<boolean> {
+    const gridIds = Array.isArray(ids) ? ids.join(",") : ids.toString();
+
+    return await this.handleRequest("DELETE", `/grids/${Array.isArray(gridIds) ? gridIds.join(",") : gridIds}`);
+}
 }

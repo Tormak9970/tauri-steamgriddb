@@ -1,50 +1,5 @@
 declare module '@tormak/tauri-steamgriddb' {
-  interface SGDBGame {
-    id: number;
-    name: string;
-    types: string[];
-    verified: boolean;
-  }
-
-  interface SGDBAuthor {
-    name: string;
-    steam64: string;
-    avatar: URL;
-  }
-
-  interface SGDBImage {
-    id: number;
-    score: number;
-    style: string[];
-    url: URL;
-    thumb: URL;
-    tags: string[];
-    author: SGDBAuthor;
-  }
-
-  interface SGDBOptions {
-    key?: string;
-    headers?: Record<string, any>;
-    baseURL?: string;
-  }
-
-  interface SGDBImageOptions {
-    id: number;
-    type: string;
-    styles?: string[];
-    dimensions?: string[];
-    mimes?: string[];
-    types?: string[];
-    nsfw?: string;
-    epilepsy?: string;
-    humor?: string;
-    oneoftag?: string;
-    page?: number;
-  }
-
-  interface SGDBQueryParams {
-    [key: string]: string;
-  }
+  import type { SGDBOptions, SGDBGame, SGDBImage, SGDBImageOptions } from "steamgriddb";
 
   type TauriRequest = {
     data: string,
@@ -75,7 +30,7 @@ declare module '@tormak/tauri-steamgriddb' {
      */
     constructor(options: SGDBOptions | string);
 
-    private buildQuery(options: any): SGDBQueryParams;
+    private buildQuery(options: any): { [key: string]: string; };
 
     /**
      * General request function for intereacting with the SteamGridDB api.
@@ -86,7 +41,7 @@ declare module '@tormak/tauri-steamgriddb' {
      * @returns A promise resolving to the request's result.
      */
     // @ts-ignore
-    handleRequest(method: http.HttpVerb, url: string, params: SGDBQueryParams, formData): Promise<any>;
+    handleRequest(method: http.HttpVerb, url: string, params: { [key: string]: string; }, formData): Promise<any>;
 
     /**
      * Gets a list of possible matches for a query.
