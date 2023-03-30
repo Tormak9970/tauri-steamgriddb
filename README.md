@@ -10,6 +10,22 @@ npm install @tormak/tauri-steamgriddb
 #### Get your API key
 [You can generate an API key on the SteamGridDB preferences page.](https://www.steamgriddb.com/profile/preferences)
 
+#### HTTP Scope
+In your `tauri.config.json` add:
+```json
+{
+  "tauri": {
+    "http": {
+      "all": false, //can be true as well, doesn't matter
+      "request": true,
+      "scope": [
+        "https://*.steamgriddb.com/api/*"
+      ]
+    },
+  }
+}
+```
+
 #### Require the library into your project.
 ```ts
 import SGDB from "@tormak/tauri-steamgriddb";

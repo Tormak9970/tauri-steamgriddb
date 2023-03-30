@@ -1,6 +1,6 @@
 {
   "name": "@tormak/tauri-steamgriddb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Tauri compatible wrapper for the SteamGridDB API.",
   "license": "LGPL v3",
   "keywords": [
