@@ -1,0 +1,52 @@
+{
+  "name": "@tormak/tauri-steamgriddb",
+  "version": "0.0.1",
+  "description": "A Tauri compatible wrapper for the SteamGridDB API.",
+  "license": "LGPL v3",
+  "keywords": [
+    "tauri",
+    "steamgrid",
+    "steam"
+  ],
+  "author": {
+    "name": "Travis Lane",
+    "email": "Tormak9970@gmail.com",
+    "url": "https://travislane.dev"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "exports.js",
+    "index.d.ts"
+  ],
+  "main": "./dist/tauri-steamgriddb.umd.cjs",
+  "module": "./dist/tauri-steamgriddb.es.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/tauri-steamgriddb.es.js",
+      "require": "./dist/tauri-steamgriddb.umd.cjs",
+      "types": "./index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --build --clean && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0",
+    "@tauri-apps/api": "^1.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tormak9970/tauri-steamgriddb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tormak9970/tauri-steamgriddb/issues"
+  },
+  "homepage": "https://github.com/Tormak9970/tauri-steamgriddb"
+}
