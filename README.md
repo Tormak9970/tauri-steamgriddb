@@ -182,19 +182,19 @@ altered to contain the message returned from SteamGridDB. You can access the res
 let grids;
 
 try {
-    grids = await SGDB.getGrids({dimensions: ["460x215", "920x430"], ...{type, id: 0}});
+  grids = await SGDB.getGrids({dimensions: ["460x215", "920x430"], ...{type, id: 0}});
 } catch (error) {
-    console.log(error.message); // "Game not found."
-    console.log(err.response.status); // 404
+  console.log(error.message); // "Game not found."
+  console.log(err.response.status); // 404
 };
 ```
 
 ```ts
 // Try to delete a grid you don't own
 try {
-    await client.deleteGrids(34312);
+  await client.deleteGrids(34312);
 } catch (error) {
-    console.log(error.message); // "This grid isn't yours."
-    console.log(err.response.status); // 403
+  console.log(error.message); // "This grid isn't yours."
+  console.log(err.response.status); // 403
 }
 ```

@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
     build: {
         lib: {
-            entry: path.resolve(__dirname, 'src/index'),
+            entry: path.resolve(__dirname, 'exports.js'),
             name: 'tauri-steamgriddb',
         },
         rollupOptions: {

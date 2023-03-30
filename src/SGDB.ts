@@ -43,7 +43,7 @@ export interface SGDBImageOptions {
   page?: number;
 }
 
-interface SGDBQueryParams {
+export interface SGDBQueryParams {
   [key: string]: string;
 }
 

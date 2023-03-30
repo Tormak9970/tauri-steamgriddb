@@ -1,6 +1,6 @@
 {
   "name": "@tormak/tauri-steamgriddb",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A Tauri compatible wrapper for the SteamGridDB API.",
   "license": "LGPL v3",
   "keywords": [
@@ -17,17 +17,15 @@
   "files": [
     "dist",
     "src",
-    "exports.js",
-    "index.d.ts"
+    "exports.js"
   ],
   "main": "./dist/tauri-steamgriddb.umd.cjs",
-  "module": "./dist/tauri-steamgriddb.es.js",
+  "module": "./dist/tauri-steamgriddb.js",
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/tauri-steamgriddb.es.js",
-      "require": "./dist/tauri-steamgriddb.umd.cjs",
-      "types": "./index.d.ts"
+      "import": "./dist/tauri-steamgriddb.js",
+      "require": "./dist/tauri-steamgriddb.umd.cjs"
     }
   },
   "scripts": {
