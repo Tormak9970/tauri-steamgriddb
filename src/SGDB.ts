@@ -441,5 +441,5 @@ export class SGDB {
     const gridIds = Array.isArray(ids) ? ids.join(",") : ids.toString();
 
     return await this.handleRequest("DELETE", `/grids/${Array.isArray(gridIds) ? gridIds.join(",") : gridIds}`);
-}
+  }
 }
