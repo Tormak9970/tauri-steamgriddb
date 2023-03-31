@@ -91,7 +91,7 @@ export class SGDB {
       options = Object.assign({}, options, { formData: formData });
     }
 
-    let response = await http.fetch<any>(`${this.baseURL}/temp/${url}`, options);
+    let response = await http.fetch<any>(`${this.baseURL}${url}`, options);
 
     if (response.ok) {
       if (response?.data.success) {
